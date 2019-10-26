@@ -6,7 +6,7 @@
 #    By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 21:18:08 by aimelda           #+#    #+#              #
-#    Updated: 2019/09/15 17:53:29 by aimelda          ###   ########.fr        #
+#    Updated: 2019/10/26 22:02:01 by aimelda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRC		=	ft_memset.c			\
 			ft_min.c			\
 			ft_isspace.c		\
 			ft_lstfree.c		\
+			get_next_line.c		\
 
 OBJ		=	$(addsuffix .o, $(basename $(SRC)))
 

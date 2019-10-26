@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 22:44:45 by aimelda           #+#    #+#             */
-/*   Updated: 2019/09/15 17:54:46 by aimelda          ###   ########.fr       */
+/*   Updated: 2019/10/26 22:01:12 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # define MAX_LL 9223372036854775807
+# define BUFF_SIZE 1000
 
 # include <string.h>
 # include <stdlib.h>
@@ -25,6 +26,13 @@ typedef	struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct	s_fd
+{
+	char		*txt;
+	char		*cur;
+	int			fd;
+}				t_fd;
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -94,5 +102,7 @@ size_t			ft_max(size_t n1, size_t n2);
 size_t			ft_min(size_t n1, size_t n2);
 int				ft_isspace(int c);
 void			ft_lstfree(t_list **head);
+
+int				get_next_line(const int fd, char **line);
 
 #endif
