@@ -6,15 +6,16 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 00:35:42 by aimelda           #+#    #+#             */
-/*   Updated: 2019/09/13 00:39:09 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/03/09 18:17:22 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_abs(int n)
+size_t	ft_abs(long long n)
 {
-	if (n < 0)
-		return (n * (-1));
-	return (n);
+	long long	mask;
+
+	mask = n >> (sizeof(long long) * 8 - 1);
+	return (n + mask ^ mask);
 }
