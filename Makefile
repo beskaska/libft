@@ -6,7 +6,7 @@
 #    By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/06 21:18:08 by aimelda           #+#    #+#              #
-#    Updated: 2020/02/08 16:43:34 by aimelda          ###   ########.fr        #
+#    Updated: 2020/07/20 13:44:21 by aimelda          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,6 @@ SRC		=	ft_memset.c			\
 			ft_isprint.c		\
 			ft_toupper.c		\
 			ft_tolower.c		\
-			ft_memalloc.c		\
-			ft_memdel.c			\
-			ft_strnew.c			\
-			ft_strdel.c			\
 			ft_strclr.c			\
 			ft_striter.c		\
 			ft_striteri.c		\
@@ -70,29 +66,29 @@ SRC		=	ft_memset.c			\
 			ft_lstdelone.c		\
 			ft_lstdel.c			\
 			ft_lstadd.c			\
+			ft_lstadd_back.c	\
 			ft_lstiter.c		\
 			ft_lstmap.c			\
-			ft_lstremfront.c	\
 			ft_abs.c			\
 			ft_max.c			\
 			ft_min.c			\
 			ft_isspace.c		\
-			ft_lstfree.c		\
 			ft_sqrt.c			\
+			ft_swap.c			\
 			get_next_line.c		\
 
-OBJ		=	$(addsuffix .o, $(basename $(SRC)))
+OBJ		=	$(SRC:.c=.o)
 
-NEW_OBJ	=	$(addsuffix .o, $(basename $?))
-
-C_FLAGS	=	-Wall -Wextra -Werror
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	gcc $(C_FLAGS) -I$(HDR) -c $?
-	ar rc $@ $(NEW_OBJ)
+$(NAME): $(OBJ)
+	ar rc $@ $?
 	ranlib $@
+
+$(OBJ): $(HDR)
 
 clean:
 	rm -rf $(OBJ)
@@ -101,3 +97,5 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re

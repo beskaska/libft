@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 15:07:15 by aimelda           #+#    #+#             */
-/*   Updated: 2019/11/10 15:15:29 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/06/18 21:36:02 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,16 @@ double	ft_sqrt(double n, double precision)
 	while (1)
 	{
 		tmp = (x + n / x) / 2;
-		if (ft_abs(x - tmp) < precision)
-			return (x);
+		if (x > tmp)
+		{
+			if (x - tmp < precision)
+				return (x);
+		}
+		else
+		{
+			if (tmp - x < precision)
+				return (x);
+		}
 		x = tmp;
 	}
 }

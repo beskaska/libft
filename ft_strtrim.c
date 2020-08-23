@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 22:54:36 by aimelda           #+#    #+#             */
-/*   Updated: 2019/09/13 18:16:28 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/06/17 23:46:57 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ char	*ft_strtrim(char const *s)
 
 	if (!s)
 		return (NULL);
-	while (*s == ' ' || *s == '\n' || *s == '\t')
+	while (ft_isspace(*s))
 		s++;
 	len = ft_strlen(s);
 	if (len)
-		while (s[len - 1] == ' ' || s[len - 1] == '\n' || s[len - 1] == '\t')
+		while (ft_isspace(s[len - 1]))
 			len--;
-	res = ft_strnew(len);
+	res = (char*)malloc(len + 1);
 	if (res)
+	{
+		res[len] = '\0';
 		return (ft_strncpy(res, s, len));
+	}
 	return (NULL);
 }

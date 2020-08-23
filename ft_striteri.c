@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 23:16:51 by aimelda           #+#    #+#             */
-/*   Updated: 2019/09/10 23:24:03 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/06/22 17:25:22 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	unsigned int	i;
 
 	i = 0;
-	if (s && f)
+	if (s)
 		while (*s != '\0')
 			f(i++, s++);
 }

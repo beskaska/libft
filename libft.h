@@ -6,14 +6,13 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/06 22:44:45 by aimelda           #+#    #+#             */
-/*   Updated: 2020/02/09 12:55:29 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/08/23 13:32:13 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define MAX_LL 9223372036854775807
 # define BUFF_SIZE 1000
 
 # include <string.h>
@@ -23,7 +22,6 @@
 typedef	struct	s_list
 {
 	void			*content;
-	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
 
@@ -64,10 +62,6 @@ int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 
-void			*ft_memalloc(size_t size);
-void			ft_memdel(void **ap);
-char			*ft_strnew(size_t size);
-void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char*));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -83,26 +77,27 @@ char			*ft_itoa(long long n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
-void			ft_putnbr(int n);
+void			ft_putnbr(long long n);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void			ft_putnbr_fd(long long n, int fd);
 
-t_list			*ft_lstnew(void const *content, size_t content_size);
-void			ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
-void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+t_list			*ft_lstnew(void *content);
+void			ft_lstdelone(t_list *alst, void (*del)(void *));
+void			ft_lstdel(t_list **alst, void (*del)(void *));
 void			ft_lstadd(t_list **alst, t_list *new);
-void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void			ft_lstadd_back(t_list **alst, t_list *new);
+void			ft_lstiter(t_list *lst, void (*f)(void *));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+					void (*del)(void *));
 
-t_list			*ft_lstremfront(t_list *head);
 size_t			ft_abs(long long n);
 size_t			ft_max(size_t n1, size_t n2);
 size_t			ft_min(size_t n1, size_t n2);
 int				ft_isspace(int c);
-void			ft_lstfree(t_list **head);
 double			ft_sqrt(double n, double precision);
+void			ft_swap(void *a, void *b, size_t size);
 
 int				get_next_line(const int fd, char **line);
 

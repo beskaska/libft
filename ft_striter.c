@@ -6,13 +6,13 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 22:12:34 by aimelda           #+#    #+#             */
-/*   Updated: 2019/09/10 23:23:57 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/06/22 17:24:58 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_striter(char *s, void (*f)(char*))
 {
-	if (s && f)
+	if (s)
 		while (*s != '\0')
 			f(s++);
 }

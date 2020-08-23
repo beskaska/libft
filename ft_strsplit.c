@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 23:21:37 by aimelda           #+#    #+#             */
-/*   Updated: 2019/09/15 13:18:54 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/06/22 21:43:36 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	count(char const *s, char c)
 {
-	int		bool;
+	char	bool;
 	int		res;
 
 	bool = 0;
@@ -30,7 +30,7 @@ static size_t	count(char const *s, char c)
 		}
 		else
 			bool = 0;
-	return (res);
+	return (res + 1);
 }
 
 static void		delete_all(char const **s, char **arr, size_t n)
@@ -47,12 +47,13 @@ static size_t	find_word(char const **s, char c, char **arr, size_t n)
 	res = 0;
 	while (*(*s + res) != c && *(*s + res) != '\0')
 		res++;
-	arr[n] = ft_strnew(res);
+	arr[n] = (char*)malloc(res + 1);
 	if (!(arr[n]))
 	{
 		delete_all(s, arr, n + 1);
 		return (0);
 	}
+	arr[n][res] = '\0';
 	return (res);
 }
 
@@ -63,8 +64,6 @@ char			**ft_strsplit(char const *s, char c)
 	size_t	i;
 	size_t	len;
 
-	if (!s)
-		return (NULL);
 	n = count(s, c);
 	res = (char**)malloc(sizeof(res) * n + 1);
 	if (res)

@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 17:35:13 by aimelda           #+#    #+#             */
-/*   Updated: 2020/02/09 13:59:47 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/06/22 21:46:20 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ char	*ft_itoa(long long n)
 	}
 	if (n < 0)
 		++len;
-	res = (char*)malloc(len + 1);
-	res[len] = 0;
-	if (!res)
+	if (!(res = (char*)malloc(len + 1)))
 		return (NULL);
+	res[len] = '\0';
 	res[0] = '-';
-	while (len-- > 0)
+	if (!n)
+		res[0] = '0';
+	while (n)
 	{
-		res[len] = ft_abs(n % 10) + '0';
+		res[--len] = ft_abs(n % 10) + '0';
 		n /= 10;
 	}
 	return (res);
