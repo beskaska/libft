@@ -6,7 +6,7 @@
 /*   By: aimelda <aimelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 20:59:16 by aimelda           #+#    #+#             */
-/*   Updated: 2019/09/15 12:27:35 by aimelda          ###   ########.fr       */
+/*   Updated: 2020/08/24 15:04:16 by aimelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_memdel(void **ap)
 {
-	if (ap && (*ap))
-	{
-		free(*ap);
-		*ap = NULL;
-	}
+	free(*ap);
+	*ap = NULL;
 }
